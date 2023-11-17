@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space tourism website</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bellefair&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="home">
+    <header class="primary-header flex">
+      <div>
+        <img src="../assets/shared/logo.svg" alt="Logo" class="logo" />
+      </div>
+      <!-- <img src="../assets/shared/line.svg" alt="" /> -->
+
+      <button
+        class="mobile-nav-toggle"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Menu</span>
+      </button>
+      <!-- aria-controls is looking for an id named like the value given saying that the button is controlling the tag with the respective id-->
+      <!-- aria-expended = "false" lets screen-raeders know taht is not still expended-->
+      <nav>
+        <ul id="primary-nav" data-visible="false" class="primary-nav flex">
+          <li class="active">
+            <a href="index.html" class="uppercase"
+              ><span aria-hidden="true">00</span>Home</a
+            >
+            <!--aria-hidden="true" means that a screen reader won't read it-->
+          </li>
+          <li>
+            <a href="destination.html" class="uppercase"
+              ><span aria-hidden="true">01</span>Destination</a
+            >
+          </li>
+          <li>
+            <a href="crew.html" class="uppercase"
+              ><span aria-hidden="true">02</span>Crew</a
+            >
+          </li>
+          <li>
+            <a href="technology.html" class="uppercase"
+              ><span aria-hidden="true">03</span>technology</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="home-container">
+      <div class="home-text-container">
+        <h3>So you want to travel to</h3>
+        <h1>SPACE</h1>
+        <p>
+          Space Let's face it; if you want to go to space, you might as well
+          genuinely go to outer space and not hover kind of on the edge of it.
+          Well sit back, and relax because we'll give you a truly out of this
+          world experience!
+        </p>
+      </div>
+      <button id="btn-explore">Explore</button>
+    </div>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

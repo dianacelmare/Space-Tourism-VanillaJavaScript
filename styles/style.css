@@ -1,0 +1,521 @@
+/* EM is relative to the parent element's font size, 
+so if you wish to scale the element's size based on its 
+parent's size, use EM. REM is relative to the root (HTML) font size, 
+so if you wish to scale the element's size based on the root size, 
+no matter what the parent size is, use REM. */
+/* 1rem=16px */
+
+/* ------------------------- */
+/* Custom property */
+/* -------------------------- */
+:root {
+  /* colors */
+  --clr-white: 0, 0%, 100%;
+  --clr-light-purple: 231, 77%, 90%;
+  --clr-black: 230, 35%, 7%;
+
+  /* font-sizes */
+  --fs-900: 9.375rem;
+  --fs-800: 6.25rem;
+  --fs-700: 3.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* font-families*/
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
+  --ff-serif: "Bellefair", serif;
+}
+
+/* ------------------------- */
+/* Reset */
+/* -------------------------- */
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+picture {
+  margin: 0;
+}
+/* unbold the titles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-black));
+  line-height: 1.5;
+  min-height: 100vh;
+  margin: 0;
+
+  /* to prevent any overflows */
+  overflow-x: hidden;
+}
+
+/* make images esier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+/* make forms esier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ------------------------- */
+/* Utility classes */
+/* -------------------------- */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+.container {
+  padding-inline: 0 2em;
+  margin-inline: auto;
+  max-width: 80rem;
+}
+/* only for screen reader */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+/* colors */
+.bg-dark {
+  background-color: hsl(var(--clr-black));
+}
+.bg-accent {
+  background-color: hsl(var(--clr-light-purple));
+}
+.bg-white {
+  background-color: hsl(var(--clr-white));
+}
+
+.text-dark {
+  color: hsl(var(--clr-black));
+}
+.text-accent {
+  color: hsl(var(--clr-light-purple));
+}
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+/* typography */
+.ff-serif {
+  font-family: var(--ff-serif);
+}
+.ff-sans-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-sans-normal {
+  font-family: var(--ff-sans-normal);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+.fs-700 {
+  font-size: var(--fs-700);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+.home {
+  background-image: url("../assets/home/background-home-desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* primary header */
+.logo {
+  margin: 2rem;
+}
+.primary-header {
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-nav-toggle {
+  display: none;
+}
+.primary-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: hsl(0 0% 0% / 0.5);
+  /* is not supported by firefox: 
+  backdrop-filter: blur(2rem); 
+  So use @supports()*/
+}
+@supports (backdrop-filter: blur(2rem)) {
+  .primary-nav {
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(2rem);
+  }
+}
+
+.primary-nav a {
+  text-decoration: none;
+  color: var(--white);
+}
+.primary-nav a > span {
+  font-weight: 700;
+  /* logical property for margin right*/
+  margin-inline-end: 0.5em;
+}
+/* -------------------------------------------------------- */
+/* Mobile */
+@media (max-width: 35em) {
+  .home {
+    background-image: url(../assets/home/background-home-mobile.jpg);
+  }
+  .primary-nav {
+    --gap: 2em;
+
+    position: fixed;
+    z-index: 1000;
+    /* short-hand for top bottom left and right that comes with position property */
+    inset: 0 0 0 30%;
+
+    flex-direction: column;
+    /* 20vh = 20% viewport height */
+    padding: min(20vh, 10rem) 2rem;
+
+    /* to make the nav go away, default state = not visible*/
+    transform: translateX(100%);
+    transition: 350ms ease-out;
+  }
+  .primary-nav[data-visible="true"] {
+    transform: translateX(0%);
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    background-color: transparent;
+    background-image: url(../assets/shared/icon-hamburger.svg);
+    width: 2rem;
+    background-repeat: no-repeat;
+    border: none;
+    /* to make width and height the same */
+    aspect-ratio: 1;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url(../assets/shared/icon-close.svg);
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Tablet */
+@media (min-width: 35em) and (max-width: 55em) {
+  .home {
+    background-image: url(../assets/home/background-home-tablet.jpg);
+  }
+  .primary-nav a > span {
+    display: none;
+  }
+}
+
+@media (min-width: 35em) {
+  .primary-nav {
+    --gap: clamp(1.5rem, 5vh, 3rem);
+    /* only top and bottom */
+    padding-block: 1.5rem;
+    /* the smallest possible padding left-right - 3 rem, middle-prefered value, the maximum 8rem*/
+    padding-inline: clamp(3rem, 7vh, 8rem);
+  }
+}
+
+/*
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+nav ul {
+  display: flex;
+}
+
+header {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 55px;
+}
+
+.nav-line {
+  margin-left: 40px;
+  margin-right: -40px;
+  z-index: 1;
+}
+
+image {
+  width: 48px;
+  height: fit-content;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  padding: 40px 100px;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+li a {
+  margin-right: 79px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+}
+
+button {
+  border-radius: 50%;
+  width: 270px;
+  height: 270px;
+  font-family: "Bellefair", serif;
+  font-size: 32px;
+  border: none;
+}
+
+button:hover {
+  box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 130px 165px;
+}
+.text-container {
+  width: 450px;
+}
+.text-container h1 {
+  font-size: 150px;
+  font-family: "Bellefair", serif;
+  margin: 20px 0px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.text-container h4 {
+  font-size: 28px;
+  color: var(--light-purple);
+  margin: 0px;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: "Barlow Condensed", sans-serif;
+}
+.text-container p {
+  font-size: 18px;
+  color: var(--light-purple);
+  margin: 0px;
+  line-height: 32px;
+}
+
+.burger-menu {
+  display: none;
+} */
+
+/* @media only screen and (min-width: 320px) and (max-width: 480px) {
+  body {
+    background-image: url("../assets/home/background-home-mobile.jpg");
+  }
+
+  header {
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 24px 0px;
+  }
+
+  button {
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
+  }
+  button:hover {
+    box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-line {
+    display: none;
+  }
+
+  .text-container {
+    width: 327px;
+  }
+
+  nav {
+    display: none;
+  }
+  .text-container {
+    margin: 0px 24px;
+    text-align: center;
+  }
+  .text-container h1 {
+    font-size: 80px;
+    margin: 16px 0px;
+  }
+  .text-container h4 {
+    font-size: 16px;
+  }
+  .text-container p {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  .home-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 80px;
+    padding: 48px 24px;
+  }
+
+  .burger-menu {
+    display: block;
+    margin: 0 24px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 680px) {
+  body {
+    background-image: url("../assets/home/background-home-tablet.jpg");
+  }
+
+  header {
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 24px;
+    gap: 125px;
+    margin-top: 0px;
+  }
+
+  button {
+    border-radius: 50%;
+    width: 242px;
+    height: 242px;
+  }
+
+  .nav-line {
+    display: none;
+  }
+
+  nav {
+    padding: 39px 47px;
+    font-size: 14px;
+  }
+
+  li a {
+    margin-right: 37px;
+  }
+
+  .text-container {
+    width: 356px;
+    margin: 0px 24px;
+    text-align: center;
+  }
+  .text-container h1 {
+    font-size: 80px;
+    margin: 16px 0px;
+  }
+  .text-container h4 {
+    font-size: 16px;
+  }
+  .text-container p {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  .home-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 130px;
+    padding: 60px 24px;
+  }
+} */
