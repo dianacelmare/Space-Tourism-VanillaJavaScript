@@ -26,7 +26,7 @@ no matter what the parent size is, use REM. */
 
   /* font-families*/
   --ff-sans-cond: "Barlow Condensed", sans-serif;
-  --ff-sans-normal: "Barlow", sans-serif;
+  --ff-sans-regular: "Barlow", sans-serif;
   --ff-serif: "Bellefair", serif;
 }
 
@@ -67,7 +67,7 @@ p {
 /* set up the body */
 
 body {
-  font-family: var(--ff-sans-normal);
+  font-family: var(--ff-sans-regular);
   font-size: var(--fs-400);
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-black));
@@ -99,6 +99,7 @@ select {
 /* General */
 .flex {
   display: flex;
+  /* custom property(if it's not overwritten it takes 1 rem gap */
   gap: var(--gap, 1rem);
 }
 .grid {
@@ -110,7 +111,7 @@ select {
 .flow > * + * {
   /* custom property */
   margin-top: var(--flow-space, 1rem);
-  outline: 1px solid red;
+  outline: 1px solid transparent;
 }
 .container {
   padding-inline: 0 2em;
@@ -155,8 +156,8 @@ select {
 .ff-sans-cond {
   font-family: var(--ff-sans-cond);
 }
-.ff-sans-normal {
-  font-family: var(--ff-sans-normal);
+.ff-sans-regular {
+  font-family: var(--ff-sans-regular);
 }
 
 .letter-spacing-1 {
@@ -219,12 +220,13 @@ select {
 }
 
 /* ------------------------- */
-/* Caomponents */
+/* Components */
 /* -------------------------- */
 
 .large-button {
   /* cause we work with a link */
-  display: grid;
+
+  display: inline-grid;
   place-items: center;
   padding: 0 2em;
   aspect-ratio: 1;
@@ -239,21 +241,95 @@ select {
   transition: transform 500ms ease-in-out;
 }
 /* Animated alternative */
-/* .large-button::after {
+/* .large-button {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  padding: 0 2em;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  text-decoration: none;
+}
+
+.large-button::after {
   content: '';
   position: absolute;
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: hsl( var(--clr-white) / .15);
+  background: hsl( var(--clr-white) / .1);
   border-radius: 50%;
-  transition: transform 500ms ease-in-out;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
 }
 
 .large-button:hover::after,
 .large-button:focus::after {
+  opacity: 1;
   transform: scale(1.5);
 } */
+
+/* selecting every direct child of undrline-indicators */
+.underline-indicators > * {
+  cursor: pointer;
+  border: none;
+  padding: var(--underline-gap, 1rem) 0;
+  border-bottom: 0.2rem solid hsl(var(--clr-white), 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+  border-bottom: 0.2rem solid hsl(var(--clr-white), 0.5);
+}
+
+.underline-indicators > *.active {
+  border-bottom: 0.2rem solid hsl(var(--clr-white), 1);
+}
+
+.tab-list > * {
+  cursor: pointer;
+}
+.tab-list > *.active {
+  color: hsl(var(--clr-white));
+}
+
+.dot-indicators > * {
+  cursor: pointer;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-white), 0.25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicator > *:focus {
+  background-color: hsl(var(--clr-white), 0.5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+  background-color: hsl(var(--clr-white), 1);
+  outline: 0;
+}
+
+.number-indicators > * {
+  cursor: pointer;
+  width: 4rem;
+  aspect-ratio: 1;
+  background-color: hsl(var(--clr-black));
+  border: 1.5px solid hsl(var(--clr-white), 0.25);
+  border-radius: 50%;
+}
+
+.number-indicators > *:hover,
+.number-indicators > *:focus {
+  border: 1.5px solid hsl(var(--clr-white));
+}
+.number-indicators > [aria-selected="true"] {
+  color: hsl(var(--clr-black));
+  background-color: hsl(var(--clr-white), 1);
+  outline: 0;
+}
 
 .home {
   background-image: url("../assets/home/background-home-desktop.jpg");
@@ -273,6 +349,7 @@ select {
 }
 .primary-nav {
   list-style: none;
+  --underline-gap: 2rem;
   padding: 0;
   margin: 0;
   background: hsl(0 0% 0% / 0.5);
@@ -289,13 +366,14 @@ select {
 
 .primary-nav a {
   text-decoration: none;
-  color: var(--white);
+  color: var(--clr-white);
 }
 .primary-nav a > span {
   font-weight: 700;
   /* logical property for margin right*/
   margin-inline-end: 0.5em;
 }
+
 /* -------------------------------------------------------- */
 /* Mobile */
 @media (max-width: 35em) {

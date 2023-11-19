@@ -3,26 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space tourism website</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom style -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bellefair&family=Work+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
-      rel="stylesheet"
-    />
+    <title>Space tourism website</title>
   </head>
 
   <body class="home">
@@ -30,7 +20,9 @@
       <div>
         <img src="../assets/shared/logo.svg" alt="Logo" class="logo" />
       </div>
-      <!-- <img src="../assets/shared/line.svg" alt="" /> -->
+      <div>
+        <img src="../assets/shared/line.svg" alt="" />
+      </div>
 
       <button
         class="mobile-nav-toggle"
@@ -39,47 +31,68 @@
       >
         <span class="sr-only">Menu</span>
       </button>
+      <!-- aria - accesible rich internet applications -  is a set of roles and attributes that define ways to make web content and web applications more accessible to people with disabilities.-->
       <!-- aria-controls is looking for an id named like the value given saying that the button is controlling the tag with the respective id-->
       <!-- aria-expended = "false" lets screen-raeders know taht is not still expended-->
       <nav>
-        <ul id="primary-nav" data-visible="false" class="primary-nav flex">
+        <ul
+          id="primary-nav"
+          data-visible="false"
+          class="primary-nav flex underline-indicators"
+        >
           <li class="active">
-            <a href="index.html" class="uppercase"
+            <a
+              href="index.html"
+              class="uppercase ff-sans-cond text-white letter-spacing-2"
               ><span aria-hidden="true">00</span>Home</a
             >
             <!--aria-hidden="true" means that a screen reader won't read it-->
           </li>
           <li>
-            <a href="destination.html" class="uppercase"
+            <a
+              href="destination.html"
+              class="uppercase ff-sans-cond text-white letter-spacing-2"
               ><span aria-hidden="true">01</span>Destination</a
             >
           </li>
           <li>
-            <a href="crew.html" class="uppercase"
+            <a
+              href="crew.html"
+              class="uppercase ff-sans-cond text-white letter-spacing-2"
               ><span aria-hidden="true">02</span>Crew</a
             >
           </li>
           <li>
-            <a href="technology.html" class="uppercase"
+            <a
+              href="technology.html"
+              class="uppercase ff-sans-cond text-white letter-spacing-2"
               ><span aria-hidden="true">03</span>technology</a
             >
           </li>
         </ul>
       </nav>
     </header>
+    <!-- Page Container -->
     <div class="home-container">
       <div class="home-text-container">
-        <h3>So you want to travel to</h3>
-        <h1>SPACE</h1>
-        <p>
+        <h1 class="uppercase ff-sans-cond fs-500 letter-spacing-1 text-accent">
+          So you want to travel to
+          <span class="fs-900 ff-serif text-white">SPACE</span>
+        </h1>
+        <p class="letter-spacing-2 text-accent">
           Space Let's face it; if you want to go to space, you might as well
           genuinely go to outer space and not hover kind of on the edge of it.
           Well sit back, and relax because we'll give you a truly out of this
           world experience!
         </p>
       </div>
-      <button id="btn-explore">Explore</button>
+      <a
+        href="#"
+        class="large-button uppercase ff-serif fs-600 text-dark bg-white"
+        >Explore</a
+      >
     </div>
+    <!-- Functionalities -->
     <script src="../js/script.js"></script>
   </body>
 </html>
