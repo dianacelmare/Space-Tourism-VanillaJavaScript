@@ -15,12 +15,12 @@ no matter what the parent size is, use REM. */
   --clr-black: 230, 35%, 7%;
 
   /* font-sizes */
-  --fs-900: 9.375rem;
-  --fs-800: 6.25rem;
-  --fs-700: 3.5rem;
-  --fs-600: 2rem;
+  --fs-900: clamp(5rem, 7vw + 1rem, 9.357rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
   --fs-500: 1.75rem;
-  --fs-400: 1.125rem;
+  --fs-400: 0.937rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
 
@@ -28,6 +28,24 @@ no matter what the parent size is, use REM. */
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-regular: "Barlow", sans-serif;
   --ff-serif: "Bellefair", serif;
+}
+
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
 }
 
 /* ------------------------- */
@@ -74,9 +92,18 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   margin: 0;
+  display: grid;
+  grid-template-rows: min-content 1fr;
 
   /* to prevent any overflows */
   overflow-x: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* home background */
+.home {
+  background-image: url("../assets/home/background-home-desktop.jpg");
 }
 
 /* make images esier to work with */
@@ -106,6 +133,9 @@ select {
   display: grid;
   gap: var(--gap, 1rem);
 }
+.block {
+  display: block;
+}
 /* everything that doesn't have a sibling before it */
 /* .flow > *:not(:first-child) */
 .flow > * + * {
@@ -113,11 +143,57 @@ select {
   margin-top: var(--flow-space, 1rem);
   outline: 1px solid transparent;
 }
+
 .container {
   padding-inline: 0 2em;
   margin-inline: auto;
   max-width: 80rem;
 }
+.grid-container {
+  border: 5px solid limegreen;
+  display: grid;
+  text-align: center;
+  place-items: center;
+  /* place-content: center; */
+  padding-inline: 1rem;
+}
+
+.grid-container * {
+  max-width: 50ch;
+}
+
+/* for the larger screen sizes */
+@media (min-width: 45rem) {
+  .grid-container {
+    text-align: left;
+    gap: var(--container-gap, 2rem);
+    /* four columns and the middlearea(the 2 columns in the middle) is resposive */
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        2rem,
+        1fr
+      );
+  }
+  .grid-container > *:first-child {
+    /* short-hand for grid-column-start & grid-column-end */
+    grid-column: 2;
+    outline: 1px solid red;
+  }
+  .grid-container > *:last-child {
+    grid-column: 3;
+    outline: 1px solid yellow;
+  }
+  .grid-container--home {
+    padding-bottom: 6rem;
+    align-items: end;
+  }
+}
+.grid-container > *:first-child {
+  outline: 1px solid red;
+}
+.grid-container > *:last-child {
+  outline: 1px solid yellow;
+}
+
 /* only for screen reader */
 .sr-only {
   position: absolute;
@@ -225,7 +301,6 @@ select {
 
 .large-button {
   /* cause we work with a link */
-
   display: inline-grid;
   place-items: center;
   padding: 0 2em;
@@ -233,6 +308,7 @@ select {
   border-radius: 50%;
   border: none;
   text-decoration: none;
+  font-size: 2rem;
 }
 
 .large-button:hover {
@@ -331,12 +407,10 @@ select {
   outline: 0;
 }
 
-.home {
-  background-image: url("../assets/home/background-home-desktop.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-/* primary header */
+/* ------------------------------ */
+/* Primary Header */
+/* ------------------------------ */
+
 .logo {
   margin: 2rem;
 }
