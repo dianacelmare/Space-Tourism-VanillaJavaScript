@@ -1,3 +1,6 @@
+// when someone clicks the hamburger button
+// if the nav is closed, open it
+// if the nav is open, close it
 const primaryNav = document.querySelector(".primary-nav");
 const navToggle = document.querySelector(".mobile-nav-toggle");
 
