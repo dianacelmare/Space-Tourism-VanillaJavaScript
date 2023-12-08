@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,8 +14,10 @@
     <!-- Custom style -->
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Space tourism website</title>
+
     <!-- Functionalities -->
-    <script src="./js/script.js" defer></script>
+    <script src="./js/burgerMenu.js" defer></script>
+    <script src="./js/tabs.js" defer></script>
   </head>
 
   <body class="destination">
@@ -76,58 +79,83 @@
         <span aria-hidden="true">01</span> Pick your destination
       </h1>
 
+      <!-- IMAGE -->
+      <!-- Moon -->
       <picture>
         <source srcset="assets/destination/image-moon.webp" type="image/webp" />
         <img src="assets/destination/image-moon.png" alt="the moon" />
       </picture>
+      <!-- Mars -->
       <picture hidden>
         <source srcset="assets/destination/image-mars.webp" type="image/webp" />
         <img src="assets/destination/image-mars.png" alt="the planet mars" />
       </picture>
+      <!-- Europa -->
       <picture hidden>
         <source
           srcset="assets/destination/image-europa.webp"
           type="image/webp"
         />
+
         <img
-          srcset="assets/destination/image-europa.png"
+          src="assets/destination/image-europa.png"
           alt="the planet europa"
         />
       </picture>
+      <!-- Titan -->
       <picture hidden>
         <source
           srcset="assets/destination/image-titan.webp"
           type="image/webp"
         />
-        <img src="assets/destination/image-titan.png" alt="the moon titan" />
+        <img
+          hidden
+          src="assets/destination/image-titan.png"
+          alt="the moon titan"
+        />
       </picture>
 
-      <div class="tab-list underline-indicators flex">
+      <!-- Mini Nav -->
+      <div role="tablist" class="tab-list underline-indicators flex">
         <button
           aria-selected="true"
+          role="tab"
+          aria-controls="moon-tab"
+          tabindex='0'
           class="active uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Moon
         </button>
         <button
           aria-selected="false"
+          role="tab"
+          aria-controls="mars-tab"
+          tabindex='-1'
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Mars
         </button>
         <button
           aria-selected="false"
+          role="tab"
+          aria-controls="europa-tab"
+          tabindex='-1'
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Europa
         </button>
         <button
           aria-selected="false"
+          role="tab"
+          aria-controls="titan-tab"
+          tabindex='-1'
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Titan
         </button>
       </div>
+
+      <!-- THE CONTENT -->
       <!-- The MOON -->
       <article class="destination-info flow">
         <h2 class="uppercase fs-800 ff-serif">Moon</h2>

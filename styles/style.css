@@ -107,7 +107,7 @@ body {
 img,
 picture {
   max-width: 100%;
-  display: block;
+  /* display: block; */
 }
 /* make forms esier to work with */
 input,
@@ -141,8 +141,8 @@ select {
   margin-top: var(--flow-space, 1rem);
   outline: 1px solid transparent;
 }
-.flow--space-small{
-  --flow-space: .5rem
+.flow--space-small {
+  --flow-space: 0.5rem;
 }
 
 .container {
@@ -292,7 +292,7 @@ select {
 .underline-indicators > * {
   cursor: pointer;
   border: none;
-  padding: var(--underline-gap, .5rem) 0;
+  padding: var(--underline-gap, 0.5rem) 0;
   border-bottom: 0.2rem solid hsl(var(--clr-white), 0);
 }
 
@@ -368,13 +368,11 @@ select {
   .home {
     background-image: url(../assets/home/background-home-tablet.jpg);
   }
-  .destination{
+  .destination {
     background-image: url(../assets/destination/background-destination-tablet.jpg);
-
   }
-  .crew{
+  .crew {
     background-image: url(../assets/crew/background-crew-tablet.jpg);
-
   }
 }
 
@@ -383,15 +381,12 @@ select {
   .home {
     background-image: url(../assets/home/background-home-mobile.jpg);
   }
-  .destination{
+  .destination {
     background-image: url(../assets/destination/background-destination-mobile.jpg);
-
   }
-  .crew{
+  .crew {
     background-image: url(../assets/crew/background-crew-mobile.jpg);
-
   }
-
 }
 /* ------------------------------ */
 /* Primary Header */
