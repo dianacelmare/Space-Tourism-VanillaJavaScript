@@ -533,7 +533,7 @@ select {
 }
 .grid-container p {
   max-width: 50ch;
-  outline: 3px solid limegreen;
+  /* outline: 3px solid limegreen; */
 }
 .numbered-title {
   grid-area: title;
@@ -663,4 +663,8 @@ select {
   /* .grid-container--crew > picture {
         align-self: end;
     } */
+}
+
+[role="tab"]:focus {
+  color: limegreen;
 }
