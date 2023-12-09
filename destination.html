@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -81,17 +81,17 @@
 
       <!-- IMAGE -->
       <!-- Moon -->
-      <picture>
+      <picture id="moon-pic">
         <source srcset="assets/destination/image-moon.webp" type="image/webp" />
         <img src="assets/destination/image-moon.png" alt="the moon" />
       </picture>
       <!-- Mars -->
-      <picture hidden>
+      <picture hidden id="mars-pic">
         <source srcset="assets/destination/image-mars.webp" type="image/webp" />
         <img src="assets/destination/image-mars.png" alt="the planet mars" />
       </picture>
       <!-- Europa -->
-      <picture hidden>
+      <picture hidden id="europa-pic">
         <source
           srcset="assets/destination/image-europa.webp"
           type="image/webp"
@@ -103,16 +103,12 @@
         />
       </picture>
       <!-- Titan -->
-      <picture hidden>
+      <picture hidden id="titan-pic">
         <source
           srcset="assets/destination/image-titan.webp"
           type="image/webp"
         />
-        <img
-          hidden
-          src="assets/destination/image-titan.png"
-          alt="the moon titan"
-        />
+        <img src="assets/destination/image-titan.png" alt="the moon titan" />
       </picture>
 
       <!-- Mini Nav -->
@@ -121,7 +117,8 @@
           aria-selected="true"
           role="tab"
           aria-controls="moon-tab"
-          tabindex='0'
+          tabindex="0"
+          data-image="moon-pic"
           class="active uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Moon
@@ -130,7 +127,8 @@
           aria-selected="false"
           role="tab"
           aria-controls="mars-tab"
-          tabindex='-1'
+          tabindex="-1"
+          data-image="mars-pic"
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Mars
@@ -139,7 +137,8 @@
           aria-selected="false"
           role="tab"
           aria-controls="europa-tab"
-          tabindex='-1'
+          tabindex="-1"
+          data-image="europa-pic"
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Europa
@@ -148,7 +147,8 @@
           aria-selected="false"
           role="tab"
           aria-controls="titan-tab"
-          tabindex='-1'
+          tabindex="-1"
+          data-image="titan-pic"
           class="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2"
         >
           Titan
@@ -157,7 +157,7 @@
 
       <!-- THE CONTENT -->
       <!-- The MOON -->
-      <article class="destination-info flow">
+      <article class="destination-info flow" id="moon-tab" tabindex="0">
         <h2 class="uppercase fs-800 ff-serif">Moon</h2>
         <p class="text-accent">
           See our planet as you’ve never seen it before. A perfect relaxing trip
@@ -178,7 +178,7 @@
       </article>
 
       <!-- Mars -->
-      <article hidden class="destination-info flow">
+      <article hidden class="destination-info flow" id="mars-tab" tabindex="0">
         <h2 class="fs-800 uppercase ff-serif">Mars</h2>
 
         <p>
@@ -187,7 +187,7 @@
           two and a half times the size of Everest!
         </p>
 
-        <div class="destination-meta flex">
+        <div hidden class="destination-meta flex">
           <div>
             <h3 class="text-accent fs-200 uppercase">Avg. distance</h3>
             <p class="ff-serif uppercase">225 mil. km</p>
@@ -200,7 +200,12 @@
       </article>
 
       <!-- Europa -->
-      <article hidden class="destination-info flow">
+      <article
+        hidden
+        class="destination-info flow"
+        id="europa-tab"
+        tabindex="0"
+      >
         <h2 class="fs-800 uppercase ff-serif">Europa</h2>
 
         <p>
@@ -222,7 +227,7 @@
       </article>
 
       <!-- Titan -->
-      <article hidden class="destination-info flow">
+      <article hidden class="destination-info flow" id="titan-tab" tabindex="0">
         <h2 class="fs-800 uppercase ff-serif">Titan</h2>
 
         <p>
