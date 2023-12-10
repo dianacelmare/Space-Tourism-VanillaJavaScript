@@ -355,13 +355,13 @@ select {
 /* ------------------------------ */
 /* Desktop */
 .home {
-  background-image: url(../assets/home/background-home-desktop.jp);
+  background-image: url(../assets/home/background-home-desktop.jpg);
 }
 .destination {
-  background-image: url(../assets/destination/background-destination-desktop.jp);
+  background-image: url(../assets/destination/background-destination-desktop.jpg);
 }
 .crew {
-  background-image: url(../assets/crew/background-crew-desktop.jp);
+  background-image: url(../assets/crew/background-crew-desktop.jpg);
 }
 /* Tablet */
 @media (min-width: 35em) and (max-width: 55em) {
@@ -551,7 +551,9 @@ select {
 .grid-container--destination > picture {
   grid-area: image;
   max-width: 60%;
+  align-self: start;
 }
+
 .grid-container--destination > .tab-list {
   grid-area: tabs;
 }
@@ -572,10 +574,10 @@ select {
 .grid-container--crew {
   --flow-space: 2rem;
   grid-template-areas:
-    "title"
-    "image"
-    "tabs"
-    "article-content";
+    "title title"
+    "image image"
+    "tabs tabs"
+    "article-content article-content";
 }
 .grid-container--crew > picture {
   grid-area: image;
@@ -606,10 +608,10 @@ select {
     padding-bottom: 0;
     --flow-space: 2rem;
     grid-template-areas:
-      "title"
-      "article-content"
-      "tabs"
-      "image";
+      "title title"
+      "article-content article-content"
+      "tabs tabs"
+      "image image";
   }
 }
 
@@ -667,4 +669,8 @@ select {
 
 [role="tab"]:focus {
   color: limegreen;
+}
+
+.grid-container--crew > picture {
+  grid-column: span 2;
 }

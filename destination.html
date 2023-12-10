@@ -41,7 +41,7 @@
           data-visible="false"
           class="primary-nav flex underline-indicators"
         >
-          <li class="active">
+          <li>
             <a
               href="index.html"
               class="uppercase ff-sans-cond text-white letter-spacing-2"
@@ -49,7 +49,7 @@
             >
             <!--aria-hidden="true" means that a screen reader won't read it-->
           </li>
-          <li>
+          <li class="active">
             <a
               href="destination.html"
               class="uppercase ff-sans-cond text-white letter-spacing-2"
@@ -79,7 +79,7 @@
         <span aria-hidden="true">01</span> Pick your destination
       </h1>
 
-      <!-- IMAGE -->
+      <!-- THE IMAGES -->
       <!-- Moon -->
       <picture id="moon-pic">
         <source srcset="assets/destination/image-moon.webp" type="image/webp" />
@@ -111,7 +111,8 @@
         <img src="assets/destination/image-titan.png" alt="the moon titan" />
       </picture>
 
-      <!-- Mini Nav -->
+      <!-- THE TABS -->
+      <!-- Each button has an aria-controls specified, referencing the ID of the element containing the content associated with the invoking control.(article) -->
       <div role="tablist" class="tab-list underline-indicators flex">
         <button
           aria-selected="true"
