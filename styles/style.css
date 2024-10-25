@@ -296,12 +296,12 @@ select {
   border-bottom: 0.2rem solid hsl(var(--clr-white), 0);
 }
 
-.underline-indicators > *:hover,
-.underline-indicators > *:focus {
+.underline-indicators > *:hover {
   border-bottom: 0.2rem solid hsl(var(--clr-white), 0.5);
 }
 
-.underline-indicators > *.active {
+.underline-indicators > *.active,
+.underline-indicators > *:focus {
   border-bottom: 0.2rem solid hsl(var(--clr-white), 1);
 }
 
@@ -311,6 +311,7 @@ select {
 }
 .tab-list > *.active {
   color: hsl(var(--clr-white));
+  /* color: green; */
 }
 
 .dot-indicators > * {
@@ -666,10 +667,12 @@ select {
         align-self: end;
     } */
 }
-
+/* 
 [role="tab"]:focus {
   color: limegreen;
-}
+} */
+
+
 
 .grid-container--crew > picture {
   grid-column: span 2;
